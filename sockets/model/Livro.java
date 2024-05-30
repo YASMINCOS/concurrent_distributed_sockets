@@ -1,16 +1,27 @@
 package sockets.model;
 
 public class Livro {
+    private String titulo;
     private String autor;
-    private String nome;
     private String genero;
-    private int numeroDeExemplares;
+    private int exemplares;
 
-    public Livro(String autor, String nome, String genero, int numeroDeExemplares) {
+    public Livro() {
+    }
+
+    public Livro(String titulo, String autor, String genero, int exemplares) {
+        this.titulo = titulo;
         this.autor = autor;
-        this.nome = nome;
         this.genero = genero;
-        this.numeroDeExemplares = numeroDeExemplares;
+        this.exemplares = exemplares;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
     public String getAutor() {
@@ -21,14 +32,6 @@ public class Livro {
         this.autor = autor;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public String getGenero() {
         return genero;
     }
@@ -37,21 +40,21 @@ public class Livro {
         this.genero = genero;
     }
 
-    public int getNumeroDeExemplares() {
-        return numeroDeExemplares;
+    public int getExemplares() {
+        return exemplares;
     }
 
-    public void setNumeroDeExemplares(int numeroDeExemplares) {
-        this.numeroDeExemplares = numeroDeExemplares;
+    public void setExemplares(int exemplares) {
+        this.exemplares = exemplares;
     }
 
     @Override
     public String toString() {
         return "Livro{" +
-                "autor='" + autor + '\'' +
-                ", nome='" + nome + '\'' +
+                "titulo='" + titulo + '\'' +
+                ", autor='" + autor + '\'' +
                 ", genero='" + genero + '\'' +
-                ", numeroDeExemplares=" + numeroDeExemplares +
+                ", exemplares=" + exemplares +
                 '}';
     }
 }

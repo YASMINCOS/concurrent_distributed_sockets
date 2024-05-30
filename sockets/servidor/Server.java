@@ -1,5 +1,6 @@
 package sockets.servidor;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import sockets.model.Livro;
 
@@ -14,14 +15,14 @@ import java.util.List;
 
 public class Server {
 
-    private static final String FILE_PATH = "sockets/json/livros.json";
+    private static final String FILE_PATH = "/Users/usuario/Documents/Dev/Faculdade/project_sockets/src/main/java/sockets/json/livros.json";
     private static List<Livro> livros;
 
     public static void main(String[] args) {
 
         carregarLivros();
 
-        try (ServerSocket serverSocket = new ServerSocket(12345)) {
+        try (ServerSocket serverSocket = new ServerSocket(12346)) {
             System.out.println("Servidor iniciado na porta 12345...");
 
             while (true) {
@@ -46,9 +47,14 @@ public class Server {
     private static void carregarLivros() {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            livros = objectMapper.readValue(Paths.get(FILE_PATH).toFile(), new TypeReference<List<Livro>>() {
-            });
-            System.out.println("Livros carregados com sucesso.");
+            JsonNode rootNode = objectMapper.readTree(Paths.get(FILE_PATH).toFile());
+            JsonNode livrosNode = rootNode.get("livros");
+            if (livrosNode != null && livrosNode.isArray()) {
+                livros = objectMapper.convertValue(livrosNode, new TypeReference<List<Livro>>() {});
+                System.out.println("Livros carregados com sucesso.");
+            } else {
+                System.out.println("Erro: Array 'livros' não encontrado no JSON.");
+            }
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Erro ao carregar os livros do arquivo JSON.");
