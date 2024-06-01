@@ -72,9 +72,22 @@ public class Server {
     }
 
     private static void adicionarLivros(Livro livro){
-
         livros.add(livro);
+        salvarLivrosNoJson();
+    }
 
+    private static void decrementarExemplares(String titulo){
+        if (livros != null){
+            for (Livro livro : livros){
+                if(livro.getTitulo().equalsIgnoreCase(titulo) && livro.getExemplares() > 0){
+                    livro.setExemplares(livro.getExemplares() - 1);
+                    salvarLivrosNoJson();
+                }
+            }
+        }
+    }
+
+    private static void salvarLivrosNoJson(){
         try{
             ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.writerWithDefaultPrettyPrinter().writeValue(Paths.get(FILE_PATH).toFile(), livros);
