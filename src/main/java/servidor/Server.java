@@ -16,7 +16,7 @@ import java.util.List;
 
 public class Server {
 
-    private static final String FILE_PATH = "/Users/usuario/Documents/Dev/Faculdade/project_sockets_maven/src/main/java/json/livros.json";
+    private static final String FILE_PATH = "src/main/java/json/livros.json";
     private static List<Livro> livros;
 
     public static void main(String[] args) {
