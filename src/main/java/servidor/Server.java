@@ -50,8 +50,7 @@ public class Server {
             ObjectMapper objectMapper = new ObjectMapper();
             JsonNode rootNode = objectMapper.readTree(Paths.get(FILE_PATH).toFile());
             JsonNode livrosNode = rootNode.get("livros");
-            if (livrosNode != null && livrosNode.isArray()) {
-                livros = objectMapper.convertValue(livrosNode, new TypeReference<List<Livro>>() {});
+            if (livrosNode != null && livrosNode.isArray()) {livros = objectMapper.convertValue(livrosNode, new TypeReference<List<Livro>>() {});
                 System.out.println("Livros carregados com sucesso.");
             } else {
                 System.out.println("Erro: Array 'livros' não encontrado no JSON.");
@@ -60,6 +59,7 @@ public class Server {
             e.printStackTrace();
             System.out.println("Erro ao carregar os livros do arquivo JSON.");
         }
+
     }
 
     private static void enviarListaLivros(PrintWriter out) {
@@ -69,5 +69,19 @@ public class Server {
             }
         }
         out.println("FIM_LISTA");
+    }
+
+    private static void adicionarLivros(Livro livro){
+
+        livros.add(livro);
+
+        try{
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.writerWithDefaultPrettyPrinter().writeValue(Paths.get(FILE_PATH).toFile(), livros);
+            System.out.println("Livro salvo.");
+        }catch (IOException e){
+            e.printStackTrace();
+            System.out.println("Erro");
+        }
     }
 }
