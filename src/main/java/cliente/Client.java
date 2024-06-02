@@ -10,8 +10,8 @@ public class Client {
             Conexao conexao = new Conexao("localhost", 12346);
             BufferedReader console = new BufferedReader(new InputStreamReader(System.in));
 
-            menu();
             while (true) {
+                menu();
                 int op = Integer.parseInt(console.readLine());
                 if (op == 0) break;
                 switch (op) {
@@ -34,14 +34,14 @@ public class Client {
                         System.out.println("Digite a quantidade de exemplares:");
                         int exemplares = Integer.parseInt(console.readLine());
                         String comando = String.format("CADASTRAR %s, %s, %s, %d", titulo, autor, genero, exemplares);
-                        System.out.println("Enviando comando: " + comando); // Log para verificar o comando enviado
+                        System.out.println("Enviando comando: " + comando);
                         conexao.enviar(comando);
                         break;
                     default:
                         System.out.println("Opção inválida");
                 }
                 String resposta = conexao.receber();
-                System.out.println("Resposta do servidor: " + resposta); // Log para verificar a resposta recebida
+                System.out.println("Resposta do servidor: " + resposta);
             }
             conexao.fechar();
         } catch (IOException e) {
