@@ -3,7 +3,6 @@ package cliente;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
 public class Client {
     public static void main(String[] args) {
         try {
@@ -17,6 +16,10 @@ public class Client {
                 switch (op) {
                     case 1:
                         conexao.enviar("LISTAR");
+                        String resposta;
+                        while (!(resposta = conexao.receber()).equals("FIM_LISTA")) {
+                            System.out.println(resposta);
+                        }
                         break;
                     case 2:
                         System.out.println("Não operacional");
@@ -40,8 +43,6 @@ public class Client {
                     default:
                         System.out.println("Opção inválida");
                 }
-                String resposta = conexao.receber();
-                System.out.println("Resposta do servidor: " + resposta);
             }
             conexao.fechar();
         } catch (IOException e) {
@@ -60,3 +61,4 @@ public class Client {
         System.out.println("Opção:");
     }
 }
+

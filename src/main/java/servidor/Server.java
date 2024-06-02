@@ -69,10 +69,14 @@ public class Server {
     }
 
     private static void enviarListaLivros(PrintWriter out) {
-        if (livros != null) {
-            for (Livro livro : livros) {
-                out.println(livro);
+        if (livros != null && !livros.isEmpty()) {
+            out.println("Lista de Livros:");
+            for (int i = 0; i < livros.size(); i++) {
+                Livro livro = livros.get(i);
+                out.println((i + 1) + ". " + livro.getTitulo() + " - " + livro.getAutor() + " - " + livro.getGenero() + " - Exemplares: " + livro.getExemplares());
             }
+        } else {
+            out.println("Não há livros cadastrados.");
         }
         out.println("FIM_LISTA");
     }
