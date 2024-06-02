@@ -25,12 +25,23 @@ public class Client {
                         System.out.println("Não operacional");
                         break;
                     case 4:
-                        System.out.println("Não operacional");
+                        System.out.println("Digite o título do livro:");
+                        String titulo = console.readLine();
+                        System.out.println("Digite o autor do livro:");
+                        String autor = console.readLine();
+                        System.out.println("Digite o gênero do livro:");
+                        String genero = console.readLine();
+                        System.out.println("Digite a quantidade de exemplares:");
+                        int exemplares = Integer.parseInt(console.readLine());
+                        String comando = String.format("CADASTRAR %s, %s, %s, %d", titulo, autor, genero, exemplares);
+                        System.out.println("Enviando comando: " + comando); // Log para verificar o comando enviado
+                        conexao.enviar(comando);
                         break;
                     default:
-                        System.out.println("Opção invalida");
+                        System.out.println("Opção inválida");
                 }
-                System.out.println(conexao.receber());
+                String resposta = conexao.receber();
+                System.out.println("Resposta do servidor: " + resposta); // Log para verificar a resposta recebida
             }
             conexao.fechar();
         } catch (IOException e) {
@@ -49,4 +60,3 @@ public class Client {
         System.out.println("Opção:");
     }
 }
-

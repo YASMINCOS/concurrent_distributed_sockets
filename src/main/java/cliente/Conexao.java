@@ -12,13 +12,13 @@ public class Conexao {
     private BufferedReader in;
 
     public Conexao(String host, int port) throws IOException {
-        this.socket = new Socket(host, port);
-        this.out = new PrintWriter(socket.getOutputStream(), true);
-        this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        socket = new Socket(host, port);
+        out = new PrintWriter(socket.getOutputStream(), true);
+        in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
     }
 
-    public void enviar(String msg) {
-        out.println(msg);
+    public void enviar(String mensagem) {
+        out.println(mensagem);
     }
 
     public String receber() throws IOException {
@@ -26,8 +26,8 @@ public class Conexao {
     }
 
     public void fechar() throws IOException {
-        socket.close();
         in.close();
         out.close();
+        socket.close();
     }
 }
