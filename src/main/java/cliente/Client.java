@@ -22,10 +22,18 @@ public class Client {
                         }
                         break;
                     case 2:
-                        System.out.println("Não operacional");
+                        System.out.println("Digite o nome do livro que deseja alugar: ");
+                        String tituloAlugar = console.readLine();
+                        String comandoAlugar = String.format("ALUGAR %s", tituloAlugar);
+                        System.out.println("Enviando comando: " + comandoAlugar);
+                        conexao.enviar(comandoAlugar);
                         break;
                     case 3:
-                        System.out.println("Não operacional");
+                        System.out.println("Digite o nome do livro que deseja alugar: ");
+                        String tituloDevolver = console.readLine();
+                        String comandoDevolver = String.format("DEVOLVER %s", tituloDevolver);
+                        System.out.println("Enviando comando: " + comandoDevolver);
+                        conexao.enviar(comandoDevolver);
                         break;
                     case 4:
                         System.out.println("Digite o título do livro:");
