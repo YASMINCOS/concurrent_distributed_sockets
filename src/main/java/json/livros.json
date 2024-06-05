@@ -53,4 +53,9 @@
   "autor" : "emily",
   "genero" : "romance",
   "exemplares" : 3
+}, {
+  "titulo" : "leitura de verao",
+  "autor" : "emily",
+  "genero" : "2",
+  "exemplares" : 1
 } ]

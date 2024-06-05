@@ -3,6 +3,7 @@ package cliente;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
 public class Client {
     public static void main(String[] args) {
         try {
@@ -29,7 +30,7 @@ public class Client {
                         conexao.enviar(comandoAlugar);
                         break;
                     case 3:
-                        System.out.println("Digite o nome do livro que deseja alugar: ");
+                        System.out.println("Digite o nome do livro que deseja devolver: ");
                         String tituloDevolver = console.readLine();
                         String comandoDevolver = String.format("DEVOLVER %s", tituloDevolver);
                         System.out.println("Enviando comando: " + comandoDevolver);
@@ -69,4 +70,3 @@ public class Client {
         System.out.println("Opção:");
     }
 }
-

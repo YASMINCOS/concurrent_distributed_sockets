@@ -3,7 +3,6 @@ package servidor;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import model.Livro;
 
 import java.io.BufferedReader;
@@ -29,24 +28,28 @@ public class Server {
             System.out.println("Servidor iniciado na porta 12346...");
 
             while (true) {
-                Socket clientSocket = serverSocket.accept();
-                System.out.println("Cliente conectado: " + clientSocket.getInetAddress().getHostAddress());
+                try {
+                    Socket clientSocket = serverSocket.accept();
+                    System.out.println("Cliente conectado: " + clientSocket.getInetAddress().getHostAddress());
 
-                BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-                PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
+                    BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+                    PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
 
-                String inputLine;
-                while ((inputLine = in.readLine()) != null) {
-                    System.out.println("Recebido: " + inputLine);
-                    if (inputLine.equals("LISTAR")) {
-                        enviarListaLivros(out);
-                    } else if (inputLine.startsWith("CADASTRAR")) {
-                        cadastrarLivro(inputLine.substring("CADASTRAR".length()).trim(), out);
-                    } else if (inputLine.startsWith("ALUGAR")) {
-                        alugarLivro(inputLine.substring("ALUGAR".length()).trim(), out);
-                    } else if (inputLine.startsWith("DEVOLVER")) {
-                        devolverLivro(inputLine.substring("DEVOLVER".length()).trim(), out);
+                    String inputLine;
+                    while ((inputLine = in.readLine()) != null) {
+                        System.out.println("Recebido: " + inputLine);
+                        if (inputLine.equals("LISTAR")) {
+                            enviarListaLivros(out);
+                        } else if (inputLine.startsWith("CADASTRAR")) {
+                            cadastrarLivro(inputLine.substring("CADASTRAR".length()).trim(), out);
+                        } else if (inputLine.startsWith("ALUGAR")) {
+                            alugarLivro(inputLine.substring("ALUGAR".length()).trim(), out);
+                        } else if (inputLine.startsWith("DEVOLVER")) {
+                            devolverLivro(inputLine.substring("DEVOLVER".length()).trim(), out);
+                        }
                     }
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
         } catch (IOException e) {
@@ -123,64 +126,34 @@ public class Server {
         }
     }
 
-    private static void alugarLivro(String nomeLivro,  PrintWriter out) {
-        try {
-            System.out.println("Tentando alugando livro: " + nomeLivro);
-            String[] partes = nomeLivro.split(" ");
-            // separando o retorno e pegando o ultimo index - representa o titulo do livro
-            String titulo = partes[partes.length - 1].trim();
-            ObjectMapper mapper = new ObjectMapper();
-            // puxando os dados do json
-            JsonNode rootNode = mapper.readTree(Paths.get(FILE_PATH).toFile());
-            System.out.println("aaaaaaaAAAAAAAA");
-            // iterando todos os livros e procurando o nome que o cliente deseja alugar
-            for (JsonNode node : rootNode) {
-                if (node.get("titulo").asText().equals(titulo)) {
-                    // tranformando o node em Object node para permitir modificacoes;
-                    ObjectNode objectNode = (ObjectNode) node;
-                    int numeroExemplaresDispiveis = objectNode.get("exemplares").asInt();
-                    // caso o numero de exemplares for maior que 0 então ainda há livros para alugar
-                    if (numeroExemplaresDispiveis > 0) {
-                        objectNode.put("exemplares", numeroExemplaresDispiveis - 1);
-                        out.println("Livro alugado com sucesso!");
-                    } else {
-                        out.println("Não há exemplares desse livro disponiveis para aluguel no momento.");
-                    }
+    private static void alugarLivro(String nomeLivro, PrintWriter out) throws IOException {
+        System.out.println("Tentando alugar livro: " + nomeLivro);
+        for (Livro livro : livros) {
+            if (livro.getTitulo().equalsIgnoreCase(nomeLivro)) {
+                if (livro.getExemplares() > 0) {
+                    livro.setExemplares(livro.getExemplares() - 1);
+                    salvarLivrosNoJson();
+                    out.println("Livro alugado com sucesso!");
+                    return;
+                } else {
+                    out.println("Não há exemplares desse livro disponíveis para aluguel no momento.");
+                    return;
                 }
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Erro ao alugar os livros - lista vazio.");
         }
+        out.println("Livro não encontrado.");
     }
 
-    private static void devolverLivro(String nomeLivro,  PrintWriter out) {
-        try {
-            System.out.println("tentando devolvendo livro: " + nomeLivro);
-            String[] partes = nomeLivro.split(" ");
-            // separando o retorno e pegando o ultimo index - representa o titulo do livro
-            String titulo = partes[partes.length - 1].trim();
-            ObjectMapper mapper = new ObjectMapper();
-            // puxando os dados do json
-            JsonNode rootNode = mapper.readTree(Paths.get(FILE_PATH).toFile());
-            System.out.println("aaaaaaaAAAAAAAA");
-            // iterando todos os livros e procurando o nome que o cliente deseja devolver
-            for (JsonNode node : rootNode) {
-                if (node.get("titulo").asText().equals(titulo)) {
-                    // tranformando o node em Object node para permitir modificacoes;
-                    ObjectNode objectNode = (ObjectNode) node;
-                    int numeroExemplaresDispiveis = objectNode.get("exemplares").asInt();
-                    if (numeroExemplaresDispiveis > 0) { // TODO: mudar a logica de devolucao
-                        objectNode.put("exemplares", numeroExemplaresDispiveis + 1);
-                        out.println("Livro devolvido com sucesso!");
-                    } else {
-                        out.println("Não há exemplares desse livro a serem devolvidos.");
-                    }
-                }
+    private static void devolverLivro(String nomeLivro, PrintWriter out) throws IOException {
+        System.out.println("Tentando devolver livro: " + nomeLivro);
+        for (Livro livro : livros) {
+            if (livro.getTitulo().equalsIgnoreCase(nomeLivro)) {
+                livro.setExemplares(livro.getExemplares() + 1);
+                salvarLivrosNoJson();
+                out.println("Livro devolvido com sucesso!");
+                return;
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Erro ao alugar os livros - lista vazio.");
         }
+        out.println("Livro não encontrado.");
     }
 }

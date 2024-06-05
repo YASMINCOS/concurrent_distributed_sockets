@@ -22,7 +22,12 @@ public class Conexao {
     }
 
     public String receber() throws IOException {
-        return in.readLine();
+        try {
+            return in.readLine();
+        } catch (IOException e) {
+            System.err.println("Erro ao receber dados: " + e.getMessage());
+            throw e;
+        }
     }
 
     public void fechar() throws IOException {
