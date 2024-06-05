@@ -28,6 +28,12 @@ public class Client {
                         String comandoAlugar = String.format("ALUGAR %s", tituloAlugar);
                         System.out.println("Enviando comando: " + comandoAlugar);
                         conexao.enviar(comandoAlugar);
+                        String respostaAluguel = conexao.receber();
+                        if (respostaAluguel.startsWith("ALERTA:")) {
+                            System.out.println(respostaAluguel);
+                        } else {
+                            System.out.println(respostaAluguel);
+                        }
                         break;
                     case 3:
                         System.out.println("Digite o nome do livro que deseja devolver: ");

@@ -52,10 +52,15 @@
   "titulo" : "louco por livros",
   "autor" : "emily",
   "genero" : "romance",
-  "exemplares" : 3
+  "exemplares" : 2
 }, {
   "titulo" : "leitura de verao",
   "autor" : "emily",
   "genero" : "2",
   "exemplares" : 1
+}, {
+  "titulo" : "novembro de 63",
+  "autor" : "stephen king",
+  "genero" : "suspense",
+  "exemplares" : 3
 } ]
