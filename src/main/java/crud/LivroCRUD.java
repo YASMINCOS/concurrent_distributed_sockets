@@ -79,7 +79,6 @@ public class LivroCRUD {
     }
 
     public static void alugarLivro(String nomeLivro, PrintWriter out) throws IOException {
-        System.out.println("Tentando alugar livro: " + nomeLivro);
         boolean livroEncontrado = false;
         for (Livro livro : livros) {
             if (livro.getTitulo().equalsIgnoreCase(nomeLivro)) {

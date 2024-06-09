@@ -24,25 +24,29 @@ public class Server {
                     BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
                     PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
 
-                    String inputLine;
-                    while ((inputLine = in.readLine()) != null) {
-                        System.out.println("Recebido: " + inputLine);
-                        if (inputLine.equals("LISTAR")) {
-                            LivroCRUD.enviarListaLivros(out);
-                        } else if (inputLine.startsWith("CADASTRAR")) {
-                            LivroCRUD.cadastrarLivro(inputLine.substring("CADASTRAR".length()).trim(), out);
-                        } else if (inputLine.startsWith("ALUGAR")) {
-                            LivroCRUD.alugarLivro(inputLine.substring("ALUGAR".length()).trim(), out);
-                        } else if (inputLine.startsWith("DEVOLVER")) {
-                            LivroCRUD.devolverLivro(inputLine.substring("DEVOLVER".length()).trim(), out);
-                        }
-                    }
+                    gerenciarInput(in, out);
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    static void gerenciarInput(BufferedReader in, PrintWriter out) throws IOException {
+        String inputLine;
+        while ((inputLine = in.readLine()) != null) {
+            if (inputLine.equals("LISTAR")) {
+                LivroCRUD.enviarListaLivros(out);
+            } else if (inputLine.startsWith("CADASTRAR")) {
+                LivroCRUD.cadastrarLivro(inputLine.substring("CADASTRAR".length()).trim(), out);
+            } else if (inputLine.startsWith("ALUGAR")) {
+                LivroCRUD.alugarLivro(inputLine.substring("ALUGAR".length()).trim(), out);
+            } else if (inputLine.startsWith("DEVOLVER")) {
+                LivroCRUD.devolverLivro(inputLine.substring("DEVOLVER".length()).trim(), out);
+            }
         }
     }
 }
