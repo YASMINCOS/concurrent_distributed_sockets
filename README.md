@@ -31,6 +31,6 @@ Gerencia a conexão entre o cliente e o servidor, facilitando a comunicação en
 ### Uso do ObjectMapper
 Nesse projeto, fizemos o uso do ObjectMapper da biblioteca Jackson que é utilizado para serializar e desserializar objetos Java para JSON e vice-versa. Este é um passo fundamental, pois permite a leitura e escrita de dados no arquivo JSON de maneira simples e eficiente. Abaixo estão algumas razões para o uso do ObjectMapper:
 
--Facilidade de Uso: Converte facilmente objetos Java para JSON e JSON para objetos Java.
--Flexibilidade: Suporta uma ampla gama de tipos de dados, incluindo coleções e mapas.
--Configuração: Permite configuração personalizada para adequar a serialização/deserialização às necessidades específicas do projeto.
+- Facilidade de Uso: Converte facilmente objetos Java para JSON e JSON para objetos Java.
+- Flexibilidade: Suporta uma ampla gama de tipos de dados, incluindo coleções e mapas.
+- Configuração: Permite configuração personalizada para adequar a serialização/deserialização às necessidades específicas do projeto.
