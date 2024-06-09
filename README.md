@@ -23,7 +23,7 @@ Contém a classe Livro, que representa os livros da biblioteca. Os atributos mí
 - Gênero
 - Número de exemplares
 4. JSON
-Armazena o arquivo JSON livros.json, que contém a lista de livros da biblioteca. Inicialmente.
+Armazena o arquivo JSON livros.json, que contém a lista de livros da biblioteca.
 
 5. Classe Conexao
 Gerencia a conexão entre o cliente e o servidor, facilitando a comunicação entre eles.
