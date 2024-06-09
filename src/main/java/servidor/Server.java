@@ -38,7 +38,7 @@ public class Server {
     static void gerenciarInput(BufferedReader in, PrintWriter out) throws IOException {
         String inputLine;
         while ((inputLine = in.readLine()) != null) {
-            if (inputLine.equals("LISTAR")) {
+            if (inputLine.startsWith("LISTAR")) {
                 LivroCRUD.enviarListaLivros(out);
             } else if (inputLine.startsWith("CADASTRAR")) {
                 LivroCRUD.cadastrarLivro(inputLine.substring("CADASTRAR".length()).trim(), out);

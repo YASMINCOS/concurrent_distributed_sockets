@@ -72,6 +72,7 @@ public class LivroCRUD {
                 out.println("Livro cadastrado com sucesso!");
             } else {
                 out.println("Erro: Formato inválido. Use: CADASTRAR titulo, autor, genero, exemplares");
+                return;
             }
         } catch (NumberFormatException e) {
             out.println("Erro: Número de exemplares inválido.");

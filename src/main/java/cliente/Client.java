@@ -12,9 +12,9 @@ public class Client {
 
             while (true) {
                 menu();
-                int op = Integer.parseInt(console.readLine());
-                if (op == 0) break;
-                switch (op) {
+                int operacao = Integer.parseInt(console.readLine());
+                if (operacao == 0) break;
+                switch (operacao) {
                     case 1:
                         enviarLivros(conexao, console);
                         break;
