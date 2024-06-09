@@ -34,3 +34,10 @@ Nesse projeto, fizemos o uso do ObjectMapper da biblioteca Jackson que é utiliz
 - Facilidade de Uso: Converte facilmente objetos Java para JSON e JSON para objetos Java.
 - Flexibilidade: Suporta uma ampla gama de tipos de dados, incluindo coleções e mapas.
 - Configuração: Permite configuração personalizada para adequar a serialização/deserialização às necessidades específicas do projeto.
+
+
+## Como Executar o Projeto
+- Clone o repositório.
+- Compile o código fonte utilizando uma IDE ou via linha de comando.
+- Execute a classe servidor para iniciar o servidor.
+- Utilize um cliente para se conectar ao servidor e realizar operações de listagem, aluguel, devolução e cadastro de livros.
