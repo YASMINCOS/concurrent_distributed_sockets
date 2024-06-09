@@ -2,7 +2,7 @@
   "titulo" : "Meditações",
   "autor" : "Marco Aurélio",
   "genero" : "Filosofia",
-  "exemplares" : 4
+  "exemplares" : 2
 }, {
   "titulo" : "Orgulho e Preconceito",
   "autor" : "Jane Austen",
@@ -62,5 +62,10 @@
   "titulo" : "novembro de 63",
   "autor" : "stephen king",
   "genero" : "suspense",
-  "exemplares" : 2
+  "exemplares" : 1
+}, {
+  "titulo" : "1984",
+  "autor" : "George Owrell",
+  "genero" : "Ficção",
+  "exemplares" : 3
 } ]
