@@ -18,10 +18,10 @@ Implementação do cliente e do servidor utilizando sockets. O servidor gerencia
 3. Model
 Contém a classe Livro, que representa os livros da biblioteca. Os atributos mínimos da classe Livro são:
 
-Autor
-Nome
-Gênero
-Número de exemplares
+- Autor
+- Nome
+- Gênero
+- Número de exemplares
 4. JSON
 Armazena o arquivo JSON livros.json, que contém a lista de livros da biblioteca. Inicialmente, o arquivo tem 10 livros.
 
