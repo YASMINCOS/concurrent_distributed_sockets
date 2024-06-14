@@ -88,33 +88,43 @@ public class LivroCRUD {
     }
 
     public static void alugarLivro(String nomeLivro, PrintWriter out) throws IOException {
-        for (Livro livro : livros) {
-            if (livro.getTitulo().equalsIgnoreCase(nomeLivro)) {
-                if (livro.getExemplaresDisponiveis() > 0) {
-                    livro.subtrairExemplar();
-//                    salvarLivrosNoJson();
-                    out.println("Livro alugado com sucesso!");
-                    return;
-                } else {
-                    out.println("ALERTA: Não há exemplares desse livro disponíveis para aluguel no momento.");
-                    return;
-                }
-            }
+        System.out.println("Tentando alugar livro: " + nomeLivro);
+        Livro livro = buscarLivro(nomeLivro);
+        if (livro == null) {
+            out.println("Livro não encontrado.");
+            return;
         }
-        out.println("Livro não encontrado.");
+
+        if (livro.getExemplaresDisponiveis() > 0) {
+            livro.subtrairExemplar();
+            salvarLivrosNoJson();
+            out.println("Livro alugado com sucesso!");
+        } else {
+            out.println("ALERTA: Não há exemplares desse livro disponíveis para aluguel no momento.");
+        }
     }
 
     public static void devolverLivro(String nomeLivro, PrintWriter out) throws IOException {
         System.out.println("Tentando devolver livro: " + nomeLivro);
-        for (Livro livro : livros) {
-            if (livro.getTitulo().equalsIgnoreCase(nomeLivro)
-                    && livro.getExemplaresDisponiveis() < livro.getExemplares()) {
-                livro.acrescentarExemplar();
-//                salvarLivrosNoJson();
+        Livro livro = buscarLivro(nomeLivro);
+        if (livro == null) {
+            out.println("Livro não encontrado.");
+            return;
+        }
+
+        if (livro.getExemplaresDisponiveis() < livro.getExemplares()) {
+            livro.acrescentarExemplar();
+                salvarLivrosNoJson();
                 out.println("Livro devolvido com sucesso!");
-                return;
+        }
+    }
+
+    public static Livro buscarLivro(String nomeLivro) {
+        for (Livro livro : livros) {
+            if (livro.getTitulo().equalsIgnoreCase(nomeLivro)) {
+                return livro;
             }
         }
-        out.println("Livro não encontrado.");
+        return null;
     }
 }

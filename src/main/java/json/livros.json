@@ -3,67 +3,67 @@
   "autor" : "Marco Aurélio",
   "genero" : "Filosofia",
   "exemplares" : 2,
-  "exemplaresDisponiveis" : 0
+  "exemplaresDisponiveis" : 2
 }, {
   "titulo" : "Orgulho e Preconceito",
   "autor" : "Jane Austen",
   "genero" : "Romance",
   "exemplares" : 4,
-  "exemplaresDisponiveis" : 0
+  "exemplaresDisponiveis" : 4
 }, {
   "titulo" : "Nada Pode Me Ferir",
   "autor" : "David Goggins",
   "genero" : "Autoajuda",
   "exemplares" : 2,
-  "exemplaresDisponiveis" : 0
+  "exemplaresDisponiveis" : 2
 }, {
   "titulo" : "O Homem Invisível",
   "autor" : "H.G. Wells",
   "genero" : "Ficção Científica",
   "exemplares" : 1,
-  "exemplaresDisponiveis" : 0
+  "exemplaresDisponiveis" : 1
 }, {
   "titulo" : "Utopia",
   "autor" : "Thomas More",
   "genero" : "Filosofia",
   "exemplares" : 14,
-  "exemplaresDisponiveis" : 0
+  "exemplaresDisponiveis" : 14
 }, {
   "titulo" : "A Revolução dos Bichos",
   "autor" : "George Orwell",
   "genero" : "Fábula Política",
   "exemplares" : 1,
-  "exemplaresDisponiveis" : 0
+  "exemplaresDisponiveis" : 1
 }, {
   "titulo" : "As Crônicas de Nárnia",
   "autor" : "C.S. Lewis",
   "genero" : "Fantasia",
   "exemplares" : 8,
-  "exemplaresDisponiveis" : 0
+  "exemplaresDisponiveis" : 8
 }, {
   "titulo" : "Cartas Chilenas",
   "autor" : "Tomás Antônio Gonzaga",
   "genero" : "Sátira",
   "exemplares" : 3,
-  "exemplaresDisponiveis" : 0
+  "exemplaresDisponiveis" : 3
 }, {
   "titulo" : "O Príncipe",
   "autor" : "Nicolau Maquiavel",
   "genero" : "Filosofia Política",
   "exemplares" : 1,
-  "exemplaresDisponiveis" : 0
+  "exemplaresDisponiveis" : 1
 }, {
   "titulo" : "O Guia do Mochileiro das Galáxias",
   "autor" : "Douglas Adams",
   "genero" : "Ficção Científica",
   "exemplares" : 10,
-  "exemplaresDisponiveis" : 0
+  "exemplaresDisponiveis" : 10
 }, {
   "titulo" : "louco por livros",
   "autor" : "emily",
   "genero" : "romance",
   "exemplares" : 1,
-  "exemplaresDisponiveis" : 0
+  "exemplaresDisponiveis" : 1
 }, {
   "titulo" : "leitura de verao",
   "autor" : "emily",
