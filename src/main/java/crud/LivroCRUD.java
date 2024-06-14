@@ -24,6 +24,9 @@ public class LivroCRUD {
             ObjectMapper objectMapper = new ObjectMapper();
             Livro[] livrosArray = objectMapper.readValue(Paths.get(FILE_PATH).toFile(), Livro[].class);
             livros = new ArrayList<>(Arrays.asList(livrosArray));
+            for (Livro livro : livros) {
+                livro.setExemplaresDisponiveis(livro.getExemplares());
+            }
             System.out.println("Livros carregados com sucesso.");
         } catch (IOException e) {
             e.printStackTrace();
@@ -48,7 +51,12 @@ public class LivroCRUD {
             out.println("Lista de Livros:");
             for (int i = 0; i < livros.size(); i++) {
                 Livro livro = livros.get(i);
-                out.println((i + 1) + ". " + livro.getTitulo() + " - " + livro.getAutor() + " - " + livro.getGenero() + " - Exemplares: " + livro.getExemplares());
+                out.println((i + 1) +
+                        ". " + livro.getTitulo() +
+                        " - " + livro.getAutor() +
+                        " - " + livro.getGenero() +
+                        " - Exemplares: " + livro.getExemplares() +
+                        " - Exemplares Disponiveis: " + livro.getExemplaresDisponiveis());
             }
         } else {
             out.println("Não há livros cadastrados.");
@@ -84,9 +92,9 @@ public class LivroCRUD {
         for (Livro livro : livros) {
             if (livro.getTitulo().equalsIgnoreCase(nomeLivro)) {
                 livroEncontrado = true;
-                if (livro.getExemplares() > 0) {
-                    livro.setExemplares(livro.getExemplares() - 1);
-                    salvarLivrosNoJson();
+                if (livro.getExemplaresDisponiveis() > 0) {
+                    livro.subtrairExemplar();
+//                    salvarLivrosNoJson();
                     out.println("Livro alugado com sucesso!");
                     return;
                 } else {
@@ -103,8 +111,9 @@ public class LivroCRUD {
     public static void devolverLivro(String nomeLivro, PrintWriter out) throws IOException {
         System.out.println("Tentando devolver livro: " + nomeLivro);
         for (Livro livro : livros) {
-            if (livro.getTitulo().equalsIgnoreCase(nomeLivro)) {
-                livro.setExemplares(livro.getExemplares() + 1);
+            if (livro.getTitulo().equalsIgnoreCase(nomeLivro)
+                    && livro.getExemplaresDisponiveis() < livro.getExemplares()) {
+                livro.acrescentarExemplar();
                 salvarLivrosNoJson();
                 out.println("Livro devolvido com sucesso!");
                 return;

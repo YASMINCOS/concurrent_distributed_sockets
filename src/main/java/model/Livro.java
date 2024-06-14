@@ -5,6 +5,7 @@ public class Livro {
     private String autor;
     private String genero;
     private int exemplares;
+    private int exemplaresDisponiveis;
 
     public Livro() {
     }
@@ -14,6 +15,7 @@ public class Livro {
         this.autor = autor;
         this.genero = genero;
         this.exemplares = exemplares;
+        this.exemplaresDisponiveis = exemplares;
     }
 
     public String getTitulo() {
@@ -48,13 +50,30 @@ public class Livro {
         this.exemplares = exemplares;
     }
 
+    public void acrescentarExemplar() {
+        exemplaresDisponiveis++;
+    }
+
+    public void subtrairExemplar() {
+        exemplaresDisponiveis--;
+    }
+
+    public int getExemplaresDisponiveis() {
+        return exemplaresDisponiveis;
+    }
+
+    public void setExemplaresDisponiveis(int exemplaresDisponiveis) {
+        this.exemplaresDisponiveis = exemplaresDisponiveis;
+    }
+
     @Override
     public String toString() {
         return "Livro{" +
                 "titulo='" + titulo + '\'' +
                 ", autor='" + autor + '\'' +
                 ", genero='" + genero + '\'' +
-                ", exemplares=" + exemplares +
+                ", exemplares='" + exemplares + '\'' +
+                ", exemplares Disponiveis=" + exemplaresDisponiveis +
                 '}';
     }
 }

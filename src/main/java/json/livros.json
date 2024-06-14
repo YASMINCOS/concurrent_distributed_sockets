@@ -2,70 +2,84 @@
   "titulo" : "Meditações",
   "autor" : "Marco Aurélio",
   "genero" : "Filosofia",
-  "exemplares" : 2
+  "exemplares" : 2,
+  "exemplaresDisponiveis" : 0
 }, {
   "titulo" : "Orgulho e Preconceito",
   "autor" : "Jane Austen",
   "genero" : "Romance",
-  "exemplares" : 4
+  "exemplares" : 4,
+  "exemplaresDisponiveis" : 0
 }, {
   "titulo" : "Nada Pode Me Ferir",
   "autor" : "David Goggins",
   "genero" : "Autoajuda",
-  "exemplares" : 2
+  "exemplares" : 2,
+  "exemplaresDisponiveis" : 0
 }, {
   "titulo" : "O Homem Invisível",
   "autor" : "H.G. Wells",
   "genero" : "Ficção Científica",
-  "exemplares" : 1
+  "exemplares" : 1,
+  "exemplaresDisponiveis" : 0
 }, {
   "titulo" : "Utopia",
   "autor" : "Thomas More",
   "genero" : "Filosofia",
-  "exemplares" : 14
+  "exemplares" : 14,
+  "exemplaresDisponiveis" : 0
 }, {
   "titulo" : "A Revolução dos Bichos",
   "autor" : "George Orwell",
   "genero" : "Fábula Política",
-  "exemplares" : 1
+  "exemplares" : 1,
+  "exemplaresDisponiveis" : 0
 }, {
   "titulo" : "As Crônicas de Nárnia",
   "autor" : "C.S. Lewis",
   "genero" : "Fantasia",
-  "exemplares" : 8
+  "exemplares" : 8,
+  "exemplaresDisponiveis" : 0
 }, {
   "titulo" : "Cartas Chilenas",
   "autor" : "Tomás Antônio Gonzaga",
   "genero" : "Sátira",
-  "exemplares" : 3
+  "exemplares" : 3,
+  "exemplaresDisponiveis" : 0
 }, {
   "titulo" : "O Príncipe",
   "autor" : "Nicolau Maquiavel",
   "genero" : "Filosofia Política",
-  "exemplares" : 1
+  "exemplares" : 1,
+  "exemplaresDisponiveis" : 0
 }, {
   "titulo" : "O Guia do Mochileiro das Galáxias",
   "autor" : "Douglas Adams",
   "genero" : "Ficção Científica",
-  "exemplares" : 10
+  "exemplares" : 10,
+  "exemplaresDisponiveis" : 0
 }, {
   "titulo" : "louco por livros",
   "autor" : "emily",
   "genero" : "romance",
-  "exemplares" : 2
+  "exemplares" : 1,
+  "exemplaresDisponiveis" : 0
 }, {
   "titulo" : "leitura de verao",
   "autor" : "emily",
   "genero" : "2",
-  "exemplares" : 1
+  "exemplares" : 0,
+  "exemplaresDisponiveis" : 0
 }, {
   "titulo" : "novembro de 63",
   "autor" : "stephen king",
   "genero" : "suspense",
-  "exemplares" : 1
+  "exemplares" : 1,
+  "exemplaresDisponiveis" : 0
 }, {
   "titulo" : "1984",
   "autor" : "George Owrell",
   "genero" : "Ficção",
-  "exemplares" : 3
+  "exemplares" : 4,
+  "exemplaresDisponiveis" : 4
 } ]
