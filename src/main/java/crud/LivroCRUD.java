@@ -88,10 +88,8 @@ public class LivroCRUD {
     }
 
     public static void alugarLivro(String nomeLivro, PrintWriter out) throws IOException {
-        boolean livroEncontrado = false;
         for (Livro livro : livros) {
             if (livro.getTitulo().equalsIgnoreCase(nomeLivro)) {
-                livroEncontrado = true;
                 if (livro.getExemplaresDisponiveis() > 0) {
                     livro.subtrairExemplar();
 //                    salvarLivrosNoJson();
@@ -103,9 +101,7 @@ public class LivroCRUD {
                 }
             }
         }
-        if (!livroEncontrado) {
-            out.println("Livro não encontrado.");
-        }
+        out.println("Livro não encontrado.");
     }
 
     public static void devolverLivro(String nomeLivro, PrintWriter out) throws IOException {
@@ -114,7 +110,7 @@ public class LivroCRUD {
             if (livro.getTitulo().equalsIgnoreCase(nomeLivro)
                     && livro.getExemplaresDisponiveis() < livro.getExemplares()) {
                 livro.acrescentarExemplar();
-                salvarLivrosNoJson();
+//                salvarLivrosNoJson();
                 out.println("Livro devolvido com sucesso!");
                 return;
             }
