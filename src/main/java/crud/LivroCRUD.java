@@ -97,7 +97,7 @@ public class LivroCRUD {
 
         if (livro.getExemplaresDisponiveis() > 0) {
             livro.subtrairExemplar();
-            salvarLivrosNoJson();
+//            salvarLivrosNoJson();
             out.println("Livro alugado com sucesso!");
         } else {
             out.println("ALERTA: Não há exemplares desse livro disponíveis para aluguel no momento.");
@@ -114,7 +114,7 @@ public class LivroCRUD {
 
         if (livro.getExemplaresDisponiveis() < livro.getExemplares()) {
             livro.acrescentarExemplar();
-                salvarLivrosNoJson();
+//                salvarLivrosNoJson();
                 out.println("Livro devolvido com sucesso!");
         }
     }
