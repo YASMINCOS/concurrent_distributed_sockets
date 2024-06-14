@@ -68,18 +68,18 @@
   "titulo" : "leitura de verao",
   "autor" : "emily",
   "genero" : "2",
-  "exemplares" : 0,
-  "exemplaresDisponiveis" : 0
+  "exemplares" : 3,
+  "exemplaresDisponiveis" : 3
 }, {
   "titulo" : "novembro de 63",
   "autor" : "stephen king",
   "genero" : "suspense",
   "exemplares" : 1,
-  "exemplaresDisponiveis" : 0
+  "exemplaresDisponiveis" : 1
 }, {
   "titulo" : "1984",
   "autor" : "George Owrell",
   "genero" : "Ficção",
   "exemplares" : 4,
-  "exemplaresDisponiveis" : 4
+  "exemplaresDisponiveis" : 3
 } ]

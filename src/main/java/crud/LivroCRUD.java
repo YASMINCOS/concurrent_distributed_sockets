@@ -24,9 +24,6 @@ public class LivroCRUD {
             ObjectMapper objectMapper = new ObjectMapper();
             Livro[] livrosArray = objectMapper.readValue(Paths.get(FILE_PATH).toFile(), Livro[].class);
             livros = new ArrayList<>(Arrays.asList(livrosArray));
-            for (Livro livro : livros) {
-                livro.setExemplaresDisponiveis(livro.getExemplares());
-            }
             System.out.println("Livros carregados com sucesso.");
         } catch (IOException e) {
             e.printStackTrace();
@@ -97,7 +94,7 @@ public class LivroCRUD {
 
         if (livro.getExemplaresDisponiveis() > 0) {
             livro.subtrairExemplar();
-//            salvarLivrosNoJson();
+            salvarLivrosNoJson();
             out.println("Livro alugado com sucesso!");
         } else {
             out.println("ALERTA: Não há exemplares desse livro disponíveis para aluguel no momento.");
@@ -114,7 +111,7 @@ public class LivroCRUD {
 
         if (livro.getExemplaresDisponiveis() < livro.getExemplares()) {
             livro.acrescentarExemplar();
-//                salvarLivrosNoJson();
+                salvarLivrosNoJson();
                 out.println("Livro devolvido com sucesso!");
         }
     }
